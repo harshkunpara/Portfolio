@@ -155,9 +155,21 @@ and working on a research paper while exploring emerging technologies.
 
 <section>
 <div class="stats">
-<div class="stat"><h2>5+</h2><p>Projects</p></div>
-<div class="stat"><h2>10+</h2><p>LeetCode Problems</p></div>
-<div class="stat"><h2>1</h2><p>Research Paper Ongoing</p></div>
+    <div class="stat">
+        <h2>5+</h2>
+        <p>Projects</p>
+    </div>
+
+    <div class="stat">
+        <h2 id="leetcode-count">...</h2>
+        <p>LeetCode Problems</p>
+    </div>
+
+    <div class="stat">
+        <h2>1</h2>
+        <p>Research Paper Ongoing</p>
+    </div>
+</div>
 </section>
 
 <section id="skills">
@@ -246,13 +258,26 @@ Live Demo
 <script>
 const arr=["Information Technology Student","Full Stack Developer","Problem Solver"];
 let i=0,j=0,d=false;
+
 function t(){
 let e=document.getElementById('type'),w=arr[i];
 e.textContent=w.slice(0,j);
 if(!d){j++;if(j>w.length){d=true;setTimeout(t,1000);return;}}
 else{j--;if(j===0){d=false;i=(i+1)%arr.length;}}
 setTimeout(t,d?50:100);
-}t();
+}
+
+t(); 
+
+fetch("https://leetcode-stats-api.herokuapp.com/HARSHPATEL_2029")
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById("leetcode-count").innerText = data.totalSolved + "+";
+  })
+  .catch(() => {
+    document.getElementById("leetcode-count").innerText = "10+";
+  });
+
 </script>
 </body>
 </html>
