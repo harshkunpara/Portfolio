@@ -161,7 +161,7 @@ and working on a research paper while exploring emerging technologies.
     </div>
 
     <div class="stat">
-        <h2 id="leetcode-count">...</h2>
+        <h2>20+</h2>
         <p>LeetCode Problems</p>
     </div>
 
@@ -267,17 +267,7 @@ else{j--;if(j===0){d=false;i=(i+1)%arr.length;}}
 setTimeout(t,d?50:100);
 }
 
-t(); 
-
-fetch("https://leetcode-stats-api.herokuapp.com/HARSHPATEL_2029")
-  .then(response => response.json())
-  .then(data => {
-    document.getElementById("leetcode-count").innerText = data.totalSolved + "+";
-  })
-  .catch(() => {
-    document.getElementById("leetcode-count").innerText = "10+";
-  });
-
+t();
 </script>
 </body>
 </html>
